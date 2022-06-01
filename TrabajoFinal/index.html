@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../TrabajoFinal/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+ <header>
+    <nav class="navbar navbar-light">
+        <div class="container pt-2">
+              <h1>Matías Mayo</h1>
+        </div>   
+    </nav>
+  </header>
+  <main>
+
+    <div class="container-fluid" >
+
+      <div class="container pt-2">
+        <div class="d-flex justify-content-center mt-3 fs-2">
+          <h2>Cotizaciones</h2> 
+        </div>
+      </div>
+      <div class="container border"id="cotizaciones">
+        <div class="row border pt-2">
+            <div class="col-4">
+              <h3>Dolar Oficial</h3>
+            </div>
+            <div class="col-4">
+              <div class="row">
+                <p class="col-6">Compra</p>
+                <p class="col-6" id="lblOficialCompra">$</p>
+              </div>
+            
+            </div>
+            <div class="col-4">
+              <div class="row">
+                <p class="col-6">Venta</p>
+                <p class="col-6"  id="lblOficialVenta">$</p>
+              </div>
+            </div>
+        </div>
+        <div class="row border pt-2">
+          <div class="col-4">
+            <h3>Dolar Blue</h3>
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <p class="col-6">Compra</p>
+              <p class="col-6" id="lblBlueCompra">$</p>
+            </div>
+          
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <p class="col-6">Venta</p>
+              <p class="col-6" id="lblBlueVenta">$</p>
+            </div>
+          </div>
+      </div>
+    </div>
+
+      <div class="container-fluid">
+        <div class="d-flex justify-content-center mt-3 mb-3 fs-2">
+          <h2>Carga de usuarios</h2>
+        </div>
+      </div>
+
+      <form class="row g-1 needs-validation" novalidate>
+          <div class="col-3">
+            <div class="d-flex justify-content-center fs-4">
+              <label for="validationCustom01" class="form-label">Nombre</label>
+            </div>
+              <input type="text" class="form-control fs-5" id="nombre" value="" required>
+              
+          </div>
+          <div class="col-3">
+            <div class="d-flex justify-content-center fs-4">
+              <label for="validationCustom02" class="form-label">Apellido</label>
+            </div>
+            <input type="text" class="form-control fs-5" id="apellido" value="" required>
+              
+            </div>  
+        <div class="col-3">
+          <div class="d-flex justify-content-center fs-4">
+            <label for="validationCustom03" class="form-label">DNI</label>
+          </div>
+          <input type="text" class="form-control fs-5" id="dni" placeholder="Solo los números" value="" required>
+          
+        </div>
+        <div class="col-3">
+          <div class="d-flex justify-content-center fs-4">
+            <label for="validationCustom04" class="form-label">Estado</label>
+          </div>
+          <select class="form-select fs-5" aria-label="Default select example" id="estado">
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+          
+        </div>
+        <div class="d-flex justify-content-center m-3">
+          <div class="d-flex p-2">
+            <button class="btn btn-primary" type="button" id="btnLimpiar">Limpiar Storage</button>
+          </div>
+          <div class="d-flex p-2">
+            <button class="btn btn-success" type="button" id="btnAgregar">Cargar</button>
+          </div>
+          
+        </div>
+      </form>
+
+      <table class="table table-primary table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col col-4">Nombre</th>
+              <th scope="col col-4">Apellido</th>
+              <th scope="col col-2">DNI</th>
+              <th scope="col col-2">Estado</th>
+            </tr>
+          </thead>
+          <tbody id="lista">
+              
+          </tbody>
+        </table>
+    </div>
+  </main>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../TrabajoFinal/js/miarchivo.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</body>
+</html>

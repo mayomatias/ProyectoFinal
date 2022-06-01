@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+*{
+    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+    background-color: #58A3E0;
+
+}
+
+nav {
+    background: steelblue;
+    color: azure;   
+}
+h1 {
+    font-weight: bolder;
+}
+
+h2,label{
+    color: azure;   
+    font-weight: bold;
+}
+
+#cotizaciones {
+    background-color: azure;
+}
+
