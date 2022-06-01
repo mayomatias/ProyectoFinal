@@ -58,36 +58,61 @@ function agregarPersona(){
         window.swal("Error","El DNI debe contener sólo números.", "error");
     } else if (localStorage.getItem(dni) == null){ 
     
-    //Se insancia el objeto de tipo Persona y se lo guarda en un array
-    personas.push(new Persona(nombre,apellido,dni,estado)); 
+        //Se insancia el objeto de tipo Persona y se lo guarda en un array
+        personas.push(new Persona(nombre,apellido,dni,estado)); 
 
-    let lista = document.getElementById("lista");
+        let lista = document.getElementById("lista");
 
-    let persona;
-    //Se recorre el array de objetos
-    for(persona of personas){}
+        let persona;
+        //Se recorre el array de objetos
+        for(persona of personas){}
 
-    //Se guarda el objeto en otro array con formato JSON
-    personasJSON.push(JSON.stringify(persona));
-    //Se guarda el objeto en el "localStorage" donde "key: dni", "value: objeto tipo Persona".
-    localStorage.setItem(persona.dni,JSON.stringify(persona));
+        //Se guarda el objeto en otro array con formato JSON
+        personasJSON.push(JSON.stringify(persona));
+        //Se guarda el objeto en el "localStorage" donde "key: dni", "value: objeto tipo Persona".
+        localStorage.setItem(persona.dni,JSON.stringify(persona));
 
-    
-    //Se incorpora el objeto al HTML
-    lista.innerHTML +=`<tr>
-                        <th scope="row">${persona.nombre}</th>
-                        <td>${persona.apellido}</td>
-                        <td>${persona.dni}</td>
-                        <td>${persona.estado}</td>
-                        </tr>` 
-    
-    Toastify({
-        text: "Usuario cargado.",
-        gravity:"bottom",
-        style: {
-            background: "#157347",
-        }
-        }).showToast();
+        
+        //Se incorpora el objeto al HTML
+        lista.innerHTML +=`<tr>
+                            <th scope="row">${persona.nombre}</th>
+                            <td>${persona.apellido}</td>
+                            <td>${persona.dni}</td>
+                            <td>${persona.estado}</td>
+                            </tr>` 
+
+      
+        
+        //FETCH POST
+        fetch('http://127.0.0.1:5500/TrabajoFinal/db/db.json', {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            }, 
+            method: 'POST',
+            body: JSON.stringify({a: 1, b: 2})
+        })
+        .then(function(response) {
+            if(response.ok) {
+               return response.text()
+            } else {
+               throw "Error en la llamada Ajax";
+            }
+        
+        }).then(function(res){
+            console.log(res) 
+        }).catch(function(res){
+            console.log(res)
+        })
+                    
+        //MESSAGE BOX
+        Toastify({
+            text: "Usuario cargado.",
+            gravity:"bottom",
+            style: {
+                background: "#157347",
+            }
+            }).showToast();
 
     } else { 
         window.swal("Error","El DNI ya corresponde a un usuario.","error");
