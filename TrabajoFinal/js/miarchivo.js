@@ -157,7 +157,13 @@ let btnLimpiar = document.getElementById("btnLimpiar");
 btnLimpiar.addEventListener("click",(limpiarStorage));
 btnAgregar.addEventListener("click",(agregarPersona));
 
+// FETCH PARA CONECTAR ARCHIVO JSON
 
+fetch("/TrabajoFinal/db/db.json")
+           .then((res) =>  res.json())
+           .then((data) => {
+               console.log(data)
+        });
 
 
 
