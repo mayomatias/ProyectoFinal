@@ -84,13 +84,9 @@ function agregarPersona(){
       
         
         //FETCH POST
-        fetch('http://127.0.0.1:5500/TrabajoFinal/db/db.json', {
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            }, 
+        fetch('http://127.0.0.1:5500/TrabajoFinal/db/db.json', { 
             method: 'POST',
-            body: JSON.stringify({a: 1, b: 2})
+            body: JSON.stringify(persona)
         })
         .then(function(response) {
             if(response.ok) {
