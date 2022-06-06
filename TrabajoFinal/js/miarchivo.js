@@ -31,7 +31,7 @@ class Persona {
     } 
 }
 
-
+let lista = document.getElementById("lista");
 let personas = [];
 let personasJSON = [];
 const reg = new RegExp('^[0-9]+$');
@@ -61,7 +61,7 @@ function agregarPersona(){
         //Se insancia el objeto de tipo Persona y se lo guarda en un array
         personas.push(new Persona(nombre,apellido,dni,estado)); 
 
-        let lista = document.getElementById("lista");
+        //let lista = document.getElementById("lista");
 
         let persona;
         //Se recorre el array de objetos
@@ -99,11 +99,50 @@ function agregarPersona(){
     }
 }
 
+//Funcion que responde al evento click del BOTÓN AGREGAR DESDE JSON
 
+// FETCH PARA CONECTAR ARCHIVO JSON
+
+function agregarPersonaDesdeJSON(){
+    fetch("/TrabajoFinal/db/db.json")
+            .then((res) =>{  
+                res.json()
+            .then((data) => {
+                data.forEach(persona => {
+                    
+              
+                    if(localStorage.getItem(persona.dni) == null){
+
+                        localStorage.setItem(persona.dni,JSON.stringify(persona));
+                        lista.innerHTML +=`<tr>
+                                <th scope="row">${persona.nombre}</th>
+                                <td>${persona.apellido}</td>
+                                <td>${persona.dni}</td>
+                                <td>${persona.estado}</td>
+                                </tr>` 
+                    } else {
+
+                        Toastify({
+                            text: "El usuario con DNI " + persona.dni + " ya fue cargado.",
+                            gravity:"bottom",
+                            duration: 1000,
+                            style: {
+                                background: "red",
+                                color: "withe"
+                            }
+                            }).showToast();
+                
+
+                    }
+                });
+            });})
+}
+
+    
 //Función que responde al evento click del BOTÓN LIMPIAR STORAGE
 function limpiarStorage() {
 swal({
-    title: "Are you sure?",
+    title: "Esta seguro?",
     text: "Una vez eliminado los archivos no podrá volver atrás!",
     icon: "warning",
     buttons: true,
@@ -156,22 +195,16 @@ function actualizarLista(){
 //EVENTOS
 window.onload = actualizarLista;
 
-let btnAgregar = document.getElementById("btnAgregar");
-let btnLimpiar = document.getElementById("btnLimpiar");
+const btnAgregar = document.getElementById("btnAgregar");
+const btnLimpiar = document.getElementById("btnLimpiar");
+const btnAgregarJSON = document.getElementById("btnAgregarJSON");
 
 btnLimpiar.addEventListener("click",(limpiarStorage));
 btnAgregar.addEventListener("click",(agregarPersona));
+btnAgregarJSON.addEventListener("click",(agregarPersonaDesdeJSON));
 
-// FETCH PARA CONECTAR ARCHIVO JSON
 
-fetch("/TrabajoFinal/db/db.json")
-           .then((res) =>{
-                console.log(res)  
-                res.json().then((data) => {
-               console.log(res);
-               console.log(data);
-        });})
-           
+
 
 
 
