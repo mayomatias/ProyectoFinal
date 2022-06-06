@@ -83,23 +83,7 @@ function agregarPersona(){
 
       
         
-        //FETCH POST
-        fetch('http://127.0.0.1:5500/TrabajoFinal/db/db.json', { 
-            method: 'POST',
-            body: JSON.stringify(persona)
-        })
-        .then(function(response) {
-            if(response.ok) {
-               return response.text()
-            } else {
-               throw "Error en la llamada Ajax";
-            }
         
-        }).then(function(res){
-            console.log(res) 
-        }).catch(function(res){
-            console.log(res)
-        })
                     
         //MESSAGE BOX
         Toastify({
@@ -181,10 +165,13 @@ btnAgregar.addEventListener("click",(agregarPersona));
 // FETCH PARA CONECTAR ARCHIVO JSON
 
 fetch("/TrabajoFinal/db/db.json")
-           .then((res) =>  res.json())
-           .then((data) => {
-               console.log(data)
-        });
+           .then((res) =>{
+                console.log(res)  
+                res.json().then((data) => {
+               console.log(res);
+               console.log(data);
+        });})
+           
 
 
 

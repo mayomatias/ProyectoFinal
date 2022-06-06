@@ -2,6 +2,31 @@
     {
         "nombre": "Fernando",
         "apellido": "Hans",
-        "dni": "35456785"
+        "dni": "35456785",
+        "estado": "Activo"
+    },
+    {
+        "nombre": "Alexis",
+        "apellido": "Berone",
+        "dni": "42456005",
+        "estado": "Activo"
+    },
+    {
+        "nombre": "Carlos",
+        "apellido": "Cernadas",
+        "dni": "38456425",
+        "estado": "Inactivo"
+    },
+    {
+        "nombre": "Alfredo",
+        "apellido": "Berone",
+        "dni": "42455789",
+        "estado": "Inactivo"
+    },
+    {
+        "nombre": "Carlos",
+        "apellido": "Cernadas",
+        "dni": "38451245",
+        "estado": "Activo"
     }
 ]
