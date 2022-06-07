@@ -10,11 +10,9 @@ fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
        return res.json()
     }
     ).then((data) => {
-        console.log(data[0]);
             lblOficialCompra.innerText = "$" + data[0].casa.compra;
             lblOficialVenta.innerText = "$" + data[0].casa.venta;
 
-        console.log(data[1]);
             lblBlueCompra.innerText = "$" + data[1].casa.compra;
             lblBlueVenta.innerText = "$" + data[1].casa.venta;
     })
@@ -41,10 +39,10 @@ const reg = new RegExp('^[0-9]+$');
 
 function agregarPersona(){   
     
-    let nombre;
-    let apellido;
-    let dni;
-    let estado;
+    let nombre = '';
+    let apellido = '';
+    let dni = '';
+    let estado = '';
     
     nombre = document.getElementById("nombre").value;
     apellido = document.getElementById("apellido").value;
@@ -85,12 +83,7 @@ function agregarPersona(){
                             <td>${persona.estado}</td>
                             </tr>` 
         
-        //Se vacían los campos
-
-        nombre.innerText = "";
-        apellido.innerText= "";
-        dni.innerText = "";        
-        estado.innerText = "Activo";
+        
                     
         //MESSAGE BOX
         Toastify({
@@ -100,7 +93,12 @@ function agregarPersona(){
                 background: "#157347",
             }
             }).showToast();
-
+        //Se vacían los campos
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellido").value = "";
+        document.getElementById("dni").value = "";
+        document.getElementById("estado").value = "Activo";
+        
     } else { 
         window.swal("Error","El DNI ya corresponde a un usuario.","error");
     }
@@ -108,11 +106,11 @@ function agregarPersona(){
 
 //Funcion que responde al evento click del BOTÓN AGREGAR DESDE JSON
 
-// FETCH PARA CONECTAR ARCHIVO JSON
+// FUNCION PARA TRAER DATOS DESDE JSON
 
 function agregarPersonaDesdeJSON(){
     fetch("/TrabajoFinal/db/db.json")
-            .then((res) =>{  
+            .then((res) =>{  btnAgregarJSON
                 res.json()
             .then((data) => {
                 data.forEach(persona => {
