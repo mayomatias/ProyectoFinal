@@ -54,6 +54,10 @@ function agregarPersona(){
     //Condicionales para que la carga del DNI sea correcta
     if(dni.length != 8){                 
         window.swal("Error","DNI Incorrecto.", "error");
+    } else if (nombre == ""){
+        window.swal("Error","No se puede dejar campos en blanco", "error");
+    } else if (apellido == ""){
+        window.swal("Error","No se puede dejar campos en blanco", "error"); 
     } else if(!reg.test(dni)){
         window.swal("Error","El DNI debe contener sólo números.", "error");
     } else if (localStorage.getItem(dni) == null){ 
@@ -80,10 +84,13 @@ function agregarPersona(){
                             <td>${persona.dni}</td>
                             <td>${persona.estado}</td>
                             </tr>` 
+        
+        //Se vacían los campos
 
-      
-        
-        
+        nombre.innerText = "";
+        apellido.innerText= "";
+        dni.innerText = "";        
+        estado.innerText = "Activo";
                     
         //MESSAGE BOX
         Toastify({
