@@ -36,32 +36,27 @@ const reg = new RegExp('^[0-9]+$');
 
 
 //Función que responde al evento click del BOTÓN AGREGAR
+    const nombre = document.getElementById("nombre");
+    const apellido = document.getElementById("apellido");
+    const dni = document.getElementById("dni");
+    const estado = document.getElementById("estado");
+
 
 function agregarPersona(){   
-    
-    let nombre = '';
-    let apellido = '';
-    let dni = '';
-    let estado = '';
-    
-    nombre = document.getElementById("nombre").value;
-    apellido = document.getElementById("apellido").value;
-    dni = document.getElementById("dni").value;
-    estado = document.getElementById("estado").value;
 
     //Condicionales para que la carga del DNI sea correcta
-    if(dni.length != 8){                 
+    if(dni.value.length != 8){                 
         window.swal("Error","DNI Incorrecto.", "error");
-    } else if (nombre == ""){
+    } else if (nombre.value == ""){
         window.swal("Error","No se puede dejar campos en blanco", "error");
-    } else if (apellido == ""){
+    } else if (apellido.value == ""){
         window.swal("Error","No se puede dejar campos en blanco", "error"); 
-    } else if(!reg.test(dni)){
+    } else if(!reg.test(dni.value)){
         window.swal("Error","El DNI debe contener sólo números.", "error");
-    } else if (localStorage.getItem(dni) == null){ 
+    } else if (localStorage.getItem(dni.value) == null){ 
     
         //Se insancia el objeto de tipo Persona y se lo guarda en un array
-        personas.push(new Persona(nombre,apellido,dni,estado)); 
+        personas.push(new Persona(nombre.value,apellido.value,dni.value,estado.value)); 
 
         //let lista = document.getElementById("lista");
 
@@ -94,10 +89,10 @@ function agregarPersona(){
             }
             }).showToast();
         //Se vacían los campos
-        document.getElementById("nombre").value = "";
-        document.getElementById("apellido").value = "";
-        document.getElementById("dni").value = "";
-        document.getElementById("estado").value = "Activo";
+        nombre.value = '';
+        apellido.value = '';
+        dni.value = '';
+        estado.value = 'Activo';
         
     } else { 
         window.swal("Error","El DNI ya corresponde a un usuario.","error");
